@@ -3,9 +3,8 @@ import { abilityAccessCtrl, PermissionRequestResult, Permissions, bundleManager,
 const TAG: string = '[Permission]';
 const PERMISSIONS: Array<Permissions> =
   ['ohos.permission.LOCATION', 'ohos.permission.APPROXIMATELY_LOCATION', 'ohos.permission.KEEP_BACKGROUND_RUNNING'];
-const context = getContext(this) as common.UIAbilityContext;
 
-export default async function grantPermission(): Promise<boolean> {
+export default async function grantPermission(context: common.UIAbilityContext): Promise<boolean> {
   try {
     let bundleInfo: bundleManager.BundleInfo =
       await bundleManager.getBundleInfoForSelf(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);

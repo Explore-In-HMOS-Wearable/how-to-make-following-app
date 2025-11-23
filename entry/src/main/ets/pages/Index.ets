@@ -11,9 +11,9 @@ let prevLongitude: number | null = null;
 let intervalId: number | undefined;
 const LOCATION_CHECK_INTERVAL = 30000;
 
-async function startManualLocationTracking() {
+async function startManualLocationTracking(context: common.UIAbilityContext) {
   try {
-    await grantPermission();
+    await grantPermission(context);
   } catch (err) {
     console.info(`grantPermission failed  ${JSON.stringify(err)}`);
     return;
@@ -90,7 +90,7 @@ struct Index {
     wantAgent.getWantAgent(wantAgentInfo).then((wantAgent) => {
       backgroundTaskManager.startBackgroundRunning(this.context, ['location'], wantAgent).then(() => {
         console.info('Continuous location task started');
-        startManualLocationTracking();
+        startManualLocationTracking(this.context);
       }).catch((err: BusinessError) => {
         console.error(`startBackgroundRunning failed: code=${err.code}, msg=${err.message}`);
       });
