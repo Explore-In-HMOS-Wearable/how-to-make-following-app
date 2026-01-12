@@ -30,7 +30,7 @@ async function startManualLocationTracking(context: common.UIAbilityContext) {
             // Start vibration.
             vibrator.startVibration({
               type: 'time',
-              duration: 1000,
+              duration: 1000
             }, {
               id: 0,
               usage: 'alarm'
@@ -84,7 +84,7 @@ struct Index {
       }],
       actionType: wantAgent.OperationType.START_ABILITY,
       requestCode: 0,
-      actionFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG],
+      actionFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
     };
 
     wantAgent.getWantAgent(wantAgentInfo).then((wantAgent) => {
